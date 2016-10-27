@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<flow width="1032" height="657">
+    <files/>
+    <nodes>
+        <node xmlns="http://www.w3.org/1999/xhtml" selected="false" x="15" y="27"
+              image="images/start.jpg">
+            <type>start</type>
+            <name>start_C7230F7708E000017F9114DDF4001FA6</name>
+            <properties>
+                <label readonly="false" type="text" title="开始" description="开始">开始</label>
+            </properties>
+        </node>
+        <node xmlns="http://www.w3.org/1999/xhtml" selected="false" x="102" y="238"
+              image="images/shell.png" layout="flow" background="#DDDDDD">
+            <type>shell</type>
+            <name>shell_C7230F7866F00001DF4DAE001D3E14BC</name>
+            <properties>
+                <label readonly="false" type="text" title="节点名称" description="节点名称">shell</label>
+                <scriptcontent readonly="true" type="scriptcontent" title="启动文件" description="选择一个脚本文件">
+                    <![CDATA[hadoop fs -ls /user/meepo_job/private/]]></scriptcontent>
+                <file readonly="true" type="file" title="依赖文件" description="选择依赖文件"></file>
+                <attempt readonly="false" type="text" title="重试次数" description="填写数字">0</attempt>
+            </properties>
+            <menus>
+                <nemu>
+                    <name>menu1</name>
+                    <click_event>changeLine</click_event>
+                </nemu>
+                <nemu>
+                    <name>menu2</name>
+                    <click_event>dada</click_event>
+                </nemu>
+                <nemu>
+                    <name>menu3</name>
+                    <click_event>menu3_event</click_event>
+                </nemu>
+            </menus>
+            <keyword>
+                <word>word1dsdsd</word>
+                <word>word2</word>
+                <word>word3</word>
+            </keyword>
+        </node>
+        <node xmlns="http://www.w3.org/1999/xhtml" selected="false" x="239" y="41"
+              image="images/ssh.png">
+            <type>ssh</type>
+            <name>ssh_C7230F796A20000111D812CF1300A940</name>
+            <properties>
+                <label readonly="false" type="text" title="节点名称" description="节点名称">ssh</label>
+                <ip readonly="false" type="normalText" title="ip地址" description="">10.5.27.30</ip>
+                <port readonly="false" type="normalText" title="端口号" description="">22</port>
+                <username readonly="false" type="normalText" title="用户名" description="">www</username>
+                <password readonly="false" type="password" title="密码" description="">www123</password>
+                <scriptcontent readonly="true" type="scriptcontent" title="启动文件" description="选择一个脚本文件">
+                    <![CDATA[hadoop fs -ls /user/meepo_job/private/]]></scriptcontent>
+                <file readonly="true" type="file" title="依赖文件" description="选择依赖文件"></file>
+            </properties>
+        </node>
+        <node xmlns="http://www.w3.org/1999/xhtml" selected="false" x="323" y="255"
+              image="images/hive.png">
+            <type>hive</type>
+            <name>hive_C7230F7A52A00001B0F193701CADD190</name>
+            <properties>
+                <label readonly="false" type="text" title="节点名称" description="节点名称">hive</label>
+                <scriptcontent readonly="true" type="scriptcontent" title="启动文件" description="选择一个脚本文件"><![CDATA[use meepo_job;
+show tables;]]></scriptcontent>
+                <file readonly="true" type="file" title="依赖文件" description="选择依赖文件"></file>
+                <attempt readonly="false" type="text" title="重试次数" description="填写数字">0</attempt>
+            </properties>
+        </node>
+        <node xmlns="http://www.w3.org/1999/xhtml" selected="true" x="446" y="45"
+              image="images/mr.png">
+            <type>mr</type>
+            <name>mr_C7230F7D32A00001E6676484E01CED90</name>
+            <properties>
+                <label readonly="false" type="text" title="节点名称" description="节点名称">mr</label>
+                <file readonly="true" type="file" title="启动文件" description="选择一个文件">
+                    <![CDATA[/all_test/hadoop-mapreduce-examples-2.6.0-cdh5.4.7.jar]]></file>
+                <command_args readonly="false" type="normalText" title="命令行参数" description="">wordCount
+                    /user/meepo_job/private/mr/input/wordCountInput.data /user/meepo_job/private/mr/output/${time}
+                </command_args>
+                <attempt readonly="false" type="normalText" title="重试次数" description="填写数字">0</attempt>
+            </properties>
+        </node>
+        <node xmlns="http://www.w3.org/1999/xhtml" selected="false" x="547" y="280"
+              image="images/python.png">
+            <type>python</type>
+            <name>python_C7230F813E600001183E687610BF17F0</name>
+            <properties>
+                <label readonly="false" type="text" title="节点名称" description="节点名称">python</label>
+                <scriptcontent readonly="true" type="scriptcontent" title="启动文件" description="选择一个脚本文件">
+                    <![CDATA[print "this is a python node"]]></scriptcontent>
+                <file readonly="true" type="file" title="依赖文件" description="选择依赖文件"></file>
+                <attempt readonly="false" type="normalText" title="重试次数" description="填写数字">0</attempt>
+            </properties>
+        </node>
+        <node xmlns="http://www.w3.org/1999/xhtml" selected="false" x="697" y="245"
+              image="images/jar.png">
+            <type>jar</type>
+            <name>jar_C7230F81F1200001D35D14C016901F91</name>
+            <properties>
+                <label readonly="false" type="text" title="节点名称" description="节点名称">jar</label>
+                <mainclass readonly="false" type="normalText" title="mainClass" description="包含main方法入口类">Test
+                </mainclass>
+                <file readonly="true" type="file" title="依赖jar" description="选择一组文件">
+                    <![CDATA[/all_test/Test.class]]></file>
+                <command_args readonly="false" type="normalText" title="命令行参数" description="">arg1 arg2</command_args>
+            </properties>
+        </node>
+        <node xmlns="http://www.w3.org/1999/xhtml" selected="false" x="699" y="30"
+              image="images/success.jpg">
+            <type>success</type>
+            <name>success_C7230F85AAC00001B5D46112D0501A9B</name>
+            <properties>
+                <label readonly="false" type="text" title="节点名称" description="节点名称">成功</label>
+            </properties>
+        </node>
+    </nodes>
+    <hops>
+        <hop xmlns="http://www.w3.org/1999/xhtml">
+            <type>connect</type>
+            <from>start_C7230F7708E000017F9114DDF4001FA6</from>
+            <to>shell_C7230F7866F00001DF4DAE001D3E14BC</to>
+            <enabled>Y</enabled>
+            <evaluation>Y</evaluation>
+            <unconditional>N</unconditional>
+            <properties>
+                <label readonly="false" type="text">可用</label>
+            </properties>
+        </hop>
+        <hop xmlns="http://www.w3.org/1999/xhtml">
+            <type>connect</type>
+            <from>shell_C7230F7866F00001DF4DAE001D3E14BC</from>
+            <to>ssh_C7230F796A20000111D812CF1300A940</to>
+            <enabled>Y</enabled>
+            <evaluation>Y</evaluation>
+            <unconditional>N</unconditional>
+            <properties>
+                <label readonly="false" type="text">可用</label>
+            </properties>
+        </hop>
+        <hop xmlns="http://www.w3.org/1999/xhtml">
+            <type>connect</type>
+            <from>ssh_C7230F796A20000111D812CF1300A940</from>
+            <to>hive_C7230F7A52A00001B0F193701CADD190</to>
+            <enabled>Y</enabled>
+            <evaluation>Y</evaluation>
+            <unconditional>N</unconditional>
+            <properties>
+                <label readonly="false" type="text">可用</label>
+            </properties>
+        </hop>
+        <hop xmlns="http://www.w3.org/1999/xhtml">
+            <type>connect</type>
+            <from>hive_C7230F7A52A00001B0F193701CADD190</from>
+            <to>mr_C7230F7D32A00001E6676484E01CED90</to>
+            <enabled>Y</enabled>
+            <evaluation>Y</evaluation>
+            <unconditional>N</unconditional>
+            <properties>
+                <label readonly="false" type="text">可用</label>
+            </properties>
+        </hop>
+        <hop xmlns="http://www.w3.org/1999/xhtml">
+            <type>connect</type>
+            <from>mr_C7230F7D32A00001E6676484E01CED90</from>
+            <to>python_C7230F813E600001183E687610BF17F0</to>
+            <enabled>Y</enabled>
+            <evaluation>Y</evaluation>
+            <unconditional>N</unconditional>
+            <properties>
+                <label readonly="false" type="text">可用</label>
+            </properties>
+        </hop>
+        <hop xmlns="http://www.w3.org/1999/xhtml">
+            <type>connect</type>
+            <from>python_C7230F813E600001183E687610BF17F0</from>
+            <to>jar_C7230F81F1200001D35D14C016901F91</to>
+            <enabled>Y</enabled>
+            <evaluation>Y</evaluation>
+            <unconditional>N</unconditional>
+            <properties>
+                <label readonly="false" type="text">可用</label>
+            </properties>
+        </hop>
+        <hop xmlns="http://www.w3.org/1999/xhtml">
+            <type>connect</type>
+            <from>jar_C7230F81F1200001D35D14C016901F91</from>
+            <to>success_C7230F85AAC00001B5D46112D0501A9B</to>
+            <enabled>Y</enabled>
+            <evaluation>Y</evaluation>
+            <unconditional>N</unconditional>
+            <properties>
+                <label readonly="false" type="text">可用</label>
+            </properties>
+        </hop>
+    </hops>
+</flow>

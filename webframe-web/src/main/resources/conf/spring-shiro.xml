@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:jdbc="http://www.springframework.org/schema/jdbc"  
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:util="http://www.springframework.org/schema/util" xmlns:task="http://www.springframework.org/schema/task" xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.0.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd"
+	default-lazy-init="true">
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager" />
+		<property name="loginUrl" value="/admin/login" />
+		<property name="successUrl" value="/admin/sys/index" />
+		<property name="filters">
+			<util:map>
+				<entry key="authc" value-ref="authcFilter" />
+				<entry key="user" value-ref="userFilter" />
+				<entry key="logout" value-ref="logoutFilter" />
+			</util:map>
+		</property>
+		<property name="filterChainDefinitions">
+			<value>
+				/ = anon
+				/statics/* = anon
+				/admin/ = anon
+				/admin/sys/index = authc,user
+				/admin/login = authc
+				/admin/logout = logout
+				/admin/**/* = authc,user
+
+			</value>
+		</property>
+	</bean>
+	<!-- Shiro Filter -->	
+	<bean id="authcFilter" class="org.red.webframe.sys.shiro.SysAuthenticationFilter">
+	</bean>
+	<bean id="userFilter" class="org.red.webframe.sys.shiro.SysUserFilter"/>
+	<bean id="logoutFilter" class="org.red.webframe.sys.shiro.SysLogoutFilter"/>
+	
+	
+	
+	<!-- 缓存配置 -->
+	<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+		<!-- 本地配置 -->
+ 		<property name="configLocation" value="classpath:conf/ehcache-native.xml" />
+	     <!--集群配置 -->
+		<!--<property name="configLocation" value="classpath:conf/ehcache-rmi.xml" />-->
+<!-- <property name="configLocation" value="classpath:ehcache.xml" /> -->
+	</bean>
+	<!-- 用户授权信息Cache, 采用EhCache -->
+	<bean id="shiroEhcacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+		<property name="cacheManager" ref="cacheManager"/>
+	</bean>
+	
+	<!-- Shiro's main business-tier object for web-enabled applications -->
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="shiroDbRealm" />
+		<property name="sessionManager" ref="sessionManager"></property>
+		<property name="cacheManager" ref="shiroEhcacheManager" />
+	</bean>
+	
+		<!-- 自定义会话管理配置 -->
+	<bean id="sessionManager" class="org.red.webframe.sys.shiro.session.SessionManager">
+		<property name="sessionDAO" ref="sessionDAO"/>
+		
+		<!-- 会话超时时间，单位：毫秒  -->
+		<property name="globalSessionTimeout" value="${session.sessionTimeout}"/>
+		
+		<!-- 定时清理失效会话, 清理用户直接关闭浏览器造成的孤立会话   -->
+		<property name="sessionValidationInterval" value="${session.sessionTimeoutClean}"/>
+<!--  		<property name="sessionValidationSchedulerEnabled" value="false"/> -->
+ 		<property name="sessionValidationSchedulerEnabled" value="true"/>
+		<property name="sessionIdCookie" ref="sessionIdCookie"/>
+		<property name="sessionIdCookieEnabled" value="true"/>
+	</bean>
+	
+	<!-- 指定本系统SESSIONID, 默认为: JSESSIONID 问题: 与SERVLET容器名冲突, 如JETTY, TOMCAT 等默认JSESSIONID,
+		当跳出SHIRO SERVLET时如ERROR-PAGE容器会为JSESSIONID重新分配值导致登录会话丢失! -->
+	<bean id="sessionIdCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
+	    <constructor-arg name="name" value="josssession.id"/>
+	</bean>
+	
+	<!-- uuid 生成器 -->
+	<bean id="idGen" class="org.red.webframe.common.util.IdGen" />
+	
+	<bean id="sessionDAO" class="org.red.webframe.sys.shiro.session.CacheSessionDAO">
+		<property name="activeSessionsCacheName" value="activeSessionsCache" />
+	</bean>
+	
+	<!-- 保证实现了Shiro内部lifecycle函数的bean执行  -->
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
+
+     <!-- 加密算法 -->
+	<bean id="credentialsDigest" class="org.red.webframe.common.security.SHA1CredentialsDigest" />
+
+
+
+</beans>

@@ -1,0 +1,53 @@
+/**tab样式扩展**/
+.tabs-header li{text-align: center;color: #838383;font-size: 12px;height: 35px;line-height: 35px;float: left;cursor: pointer;}
+.tabs-header .cur{border-top: 3px solid #a2a2a2}
+
+.tabs {
+    list-style-type: none;
+    height: 26px;
+    margin: 0px;
+    padding: 0px;
+    padding-left: 4px;
+    font-size: 12px;
+    width: 5000px;
+    border-style: solid;
+    border-width: 0;
+}
+
+.tabs li a.tabs-inner{
+    border-width:0px;
+}
+.tabs-header, .tabs-tool{
+    background-color: #eee;
+}
+
+.tabs li{border-top: 3px solid #fff;display: block;}
+.tabs .tabs-selected{border-top: 3px solid #a2a2a2}
+.tabs{height: 35px;line-height: 35px}
+
+.tabs li a,.tabs li.tabs-selected a.tabs-inner{color: #838383;}
+.tabs li a.tabs-close, .tabs-p-tool{top:38%;}
+
+.tabs li a.tabs-close{
+    background: url('../img/easy_ui_tab_close.png')  no-repeat left center;
+}
+.tabs-scroller-left{
+    background:  url('../img/easy_ui_left.png') no-repeat  center;
+}
+.tabs-scroller-right{
+    background:  url('../img/easy_ui_right.png') no-repeat center
+}
+div#rMenu {position:absolute; visibility:hidden; top:0; background: #f0f0f0;text-align: left;border: 1px solid #ccc}
+div#rMenu ul li{
+    width: 82px;
+    height: 26px;
+    line-height: 26px;
+    cursor: pointer;
+    border-bottom: 1px solid #fff;
+    text-align: center;
+    list-style-type: none;
+}
+div#rMenu ul li:hover{
+    color: #fff;
+    background: #009de8
+}

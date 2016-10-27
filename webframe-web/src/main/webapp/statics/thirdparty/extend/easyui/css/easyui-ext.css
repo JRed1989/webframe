@@ -1,0 +1,7 @@
+/*
+ *表格行被选中样式
+ */
+.datagrid-row-selected {
+    background: rgba(0, 192, 239, 0.31);
+    color: #000000;
+}

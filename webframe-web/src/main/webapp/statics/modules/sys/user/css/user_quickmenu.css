@@ -1,0 +1,70 @@
+
+#hideid div.hideimg1,a.action1{
+    /*display: inline;*/
+    /*padding: 18px 8px;*/
+    /*line-height: 50px;*/
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    opacity: 0;
+    display:none;
+}
+
+#hideid div.info-box:hover div.hideimg1,a.action1{
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+    filter: alpha(opacity=50);
+    opacity: .5;
+    display:inline;
+}
+
+
+#hideid div.hideimg2,a.action2{
+    /*display: inline;*/
+    /*padding: 18px 8px;*/
+    /*line-height: 50px;*/
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    opacity: 0;
+    display:none;
+}
+
+#hideid div.info-box:hover div.hideimg2,a.action2{
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+    filter: alpha(opacity=50);
+    opacity: .5;
+    display:inline;
+}
+
+#hideid div.hideimg3,a.action3{
+    /*display: inline;*/
+    /*padding: 18px 8px;*/
+    /*line-height: 50px;*/
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    opacity: 0;
+    display:none;
+}
+
+#hideid div.info-box:hover div.hideimg3,a.action3{
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+    filter: alpha(opacity=50);
+    opacity: .5;
+    display:inline;
+}
+
+#hideid div.hideimg4,a.action4{
+    /*display: inline;*/
+    /*padding: 18px 8px;*/
+    /*line-height: 50px;*/
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    opacity: 0;
+    display:none;
+}
+
+#hideid div.info-box:hover div.hideimg4,a.action4{
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+    filter: alpha(opacity=50);
+    opacity: .5;
+    display:inline;
+}
+

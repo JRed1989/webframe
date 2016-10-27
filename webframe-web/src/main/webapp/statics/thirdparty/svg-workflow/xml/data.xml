@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?><flow width="1031" height="657">
+    <files/>
+    <nodes>
+
+
+
+        <node xmlns="http://www.w3.org/1999/xhtml" selected="true" x="209" y="105" image="/images/shell.png" layout="flow" fontsize="12" background="#FF828A" fontcolor="blue" menusparentstyle="position:absolute; background-color:#20D1FF; z-index: 100; overflow-x: hidden;overflow-y:hidden; border:1px solid #919999; filter:alpha(opacity=5);opacity: 0.95;-moz-border-radius: 4px; -webkit-border-radius: 4px;" mousehovershowhtmlclick="suspendHtml">
+            <type>shell</type>
+            <name>ssh_ssh_1_C73828686C100001CF94CB3752AD10F6</name>
+            <properties><label readonly="false" type="text" title="开始" description="开始">第一行
+                第二行
+                第三行
+                自定义控件</label>
+            </properties><menus><menu><name>无参数</name><click_event>test()</click_event></menu><menu><name>有参数</name><click_event>test2('有参数的方法')</click_event></menu><menu><name>右击菜单三</name><click_event>test()</click_event></menu></menus></node><node xmlns="http://www.w3.org/1999/xhtml" selected="true" x="470" y="108" image="images/mr.png">
+        <type>mr</type>
+        <name>mr_C73828692FB00001B98518F21AD5B9C0</name>
+        <properties><label readonly="false" type="text" title="节点名称" description="节点名称">mr</label>
+            <file readonly="true" type="file" title="启动文件" description="选择一个文件"></file>
+            <command_args readonly="false" type="normalText" title="命令行参数" description=""></command_args>
+            <attempt readonly="false" type="normalText" title="重试次数" description="填写数字">0</attempt>
+        </properties></node><node xmlns="http://www.w3.org/1999/xhtml" selected="true" x="305" y="281" image="/images/shell.png" layout="flow" fontsize="12" background="#26C72B" fontcolor="blue" menusparentstyle="position:absolute; background-color:#C9A3FF; z-index: 100; overflow-x: hidden;overflow-y:hidden; border:1px solid #919999; filter:alpha(opacity=5);opacity: 0.95;-moz-border-radius: 4px; -webkit-border-radius: 4px;" mousehovershowhtmlclick="suspendHtml">
+        <type>shell</type>
+        <name>ssh_ssh_1_C7382876900000019C6B725B13E01C90</name>
+        <properties><label readonly="false" type="text" title="开始" description="开始">第一行
+            第二行
+            第三行
+            自定义控件</label>
+        </properties><menus><menu><name>无参数</name><click_event>test()</click_event></menu><menu><name>有参数</name><click_event>test2('有参数的方法')</click_event></menu><menu><name>右击菜单三</name><click_event>test()</click_event></menu></menus></node><node xmlns="http://www.w3.org/1999/xhtml" selected="true" x="575" y="276" image="images/python.png">
+        <type>python</type>
+        <name>python_C73828A272C0000179AB14531490A200</name>
+        <properties><label readonly="false" type="text" title="节点名称" description="节点名称">python</label>
+            <scriptcontent readonly="true" type="scriptcontent" title="启动文件" description="选择一个脚本文件"></scriptcontent>
+            <file readonly="true" type="file" title="依赖文件" description="选择依赖文件"></file>
+            <attempt readonly="false" type="normalText" title="重试次数" description="填写数字">0</attempt>
+        </properties></node><node xmlns="http://www.w3.org/1999/xhtml" selected="true" x="630" y="75" image="/images/shell.png" layout="flow" fontsize="12" background="#26C72B" fontcolor="blue" menusparentstyle="position:absolute; background-color:#C9A3FF; z-index: 100; overflow-x: hidden;overflow-y:hidden; border:1px solid #919999; filter:alpha(opacity=5);opacity: 0.95;-moz-border-radius: 4px; -webkit-border-radius: 4px;" mousehovershowhtmlclick="undefined">
+        <type>shell</type>
+        <name>ssh_ssh_1_C7384C9AED60000141DD1C601B711822</name>
+        <properties><label readonly="false" type="text" title="开始" description="开始">第一行
+            第二行
+            第三行
+            自定义控件</label>
+        </properties><menus><menu><name>无参数</name><click_event>test()</click_event></menu><menu><name>有参数</name><click_event>test2('有参数的方法')</click_event></menu><menu><name>右击菜单三</name><click_event>test()</click_event></menu></menus></node></nodes>
+    <hops>
+        <hop xmlns="http://www.w3.org/1999/xhtml"><type>connect</type><from>ssh_ssh_1_C73828686C100001CF94CB3752AD10F6</from><to>mr_C73828692FB00001B98518F21AD5B9C0</to><enabled>Y</enabled><evaluation>Y</evaluation><unconditional>N</unconditional><properties><label readonly="false" type="text">你是谁</label></properties></hop><hop xmlns="http://www.w3.org/1999/xhtml"><type>connect</type><from>ssh_ssh_1_C73828686C100001CF94CB3752AD10F6</from><to>ssh_ssh_1_C7382876900000019C6B725B13E01C90</to><enabled>Y</enabled><evaluation>Y</evaluation><unconditional>N</unconditional><properties><label readonly="false" type="text">成功</label></properties></hop><hop xmlns="http://www.w3.org/1999/xhtml"><type>connect</type><from>mr_C73828692FB00001B98518F21AD5B9C0</from><to>python_C73828A272C0000179AB14531490A200</to><enabled>Y</enabled><evaluation>Y</evaluation><unconditional>N</unconditional><properties><label readonly="false" type="text">成功</label></properties></hop><hop xmlns="http://www.w3.org/1999/xhtml"><type>connect</type><from>ssh_ssh_1_C7382876900000019C6B725B13E01C90</from><to>python_C73828A272C0000179AB14531490A200</to><enabled>Y</enabled><evaluation>Y</evaluation><unconditional>N</unconditional><properties><label readonly="false" type="text">成功</label></properties></hop></hops>
+</flow>

@@ -1,0 +1,15 @@
+/**背景图片 **/
+.login_bg_red{
+    background-image: url("../img/login_bg_red.jpg");
+}
+.login_bg_it_num{
+    background-image: url("../img/login_bg_it_num.png") ;
+}
+.login_bg_water{
+    background: url("../img/login_bg_water.gif") no-repeat;
+    background-size: 100%;
+}
+.login_bg_water2{
+    background: url("../img/login_bg_water2.gif") no-repeat;
+    background-size: 100%;
+}
